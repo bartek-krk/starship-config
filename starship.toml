@@ -1,0 +1,55 @@
+# ~/.config/starship.toml
+
+format = """
+$username$directory$battery$time$git_branch$python$java$nodejs
+[ >> ](bold yellow)
+"""
+
+[battery]
+format = '  [$symbol $percentage]($style)  '
+full_symbol = "🔋"
+charging_symbol = "🔌"
+discharging_symbol = "⚡"
+
+[[battery.display]]
+threshold = 100
+style = "bold green"
+
+[[battery.display]]
+threshold = 70
+style = "bold yellow"
+
+[[battery.display]]
+threshold = 30
+style = "bold red"
+
+[directory]
+format = '  [$read_only]($read_only_style)📂 [$path]($style)  '
+home_symbol = '~'
+read_only = '🔒 '
+truncation_length = 10
+
+[time]
+time_format = "%H:%M:%S %m/%d/%Y (%A)"
+format = "  📅 $time($style)  "
+style = "bright-white"
+disabled = false
+
+[username]
+format = '👺 [$user]($style)  '
+style_user = "bold red"
+show_always = true
+
+[python]
+format = '  [${symbol}${pyenv_prefix}Python @ (${version} )(\($virtualenv\) )]($style)  '
+
+[java]
+format = '  [$symbol Java @ ($version )]($style)  '
+
+[nodejs]
+format = '  [$symbol($version )]($style)  '
+symbol = '🪢 '
+
+[git_branch]
+format = '  [$symbol]($style) $branch(:$remote_branch)  '
+symbol = 'git branch'
